@@ -22,8 +22,7 @@ public class GeocoderController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/ds")
-    public ResponseDTO geocod(@RequestBody RequestDTO requestDTO) throws URISyntaxException {
-
-        return geocoderService.getAddress(requestDTO);
+    public ResponseDTO geo(@RequestBody RequestDTO requestDTO) throws URISyntaxException {
+        return geocoderService.checkTypeGeocoding(requestDTO);
     }
 }
