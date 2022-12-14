@@ -13,7 +13,7 @@ import java.net.URISyntaxException;
 @Service
 @Log4j2
 public class GeocoderService {
-    private RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
 
     @Value("${URL_basic}")
     private String twoGisURL;
@@ -22,12 +22,12 @@ public class GeocoderService {
     private String APIkey;
 
     public ResponseDTO checkTypeGeocoding(RequestDTO requestDTO) throws URISyntaxException {
-        if(!requestDTO.getAddress().isEmpty()){
+        if(!Strings.isEmpty(requestDTO.getAddress())){
             return directGeo(requestDTO);
         }
         else
         {
-            return reselveGEO(requestDTO);
+            return reserveGEO(requestDTO);
         }
     }
 
@@ -43,7 +43,7 @@ public class GeocoderService {
         return restTemplate.getForObject(url, ResponseDTO.class);
     }
 
-    public ResponseDTO reselveGEO(RequestDTO requestDTO) {
+    public ResponseDTO reserveGEO(RequestDTO requestDTO) {
         String url = twoGisURL;
 
         url += "?lat=" + requestDTO.getLat();
