@@ -5,6 +5,8 @@ import com.magatella.geocogingservice.entity.response.ResponseDTO;
 import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,7 +23,7 @@ public class GeocoderService {
     @Value("${API_key}")
     private String APIkey;
 
-    public ResponseDTO checkTypeGeocoding(RequestDTO requestDTO) throws URISyntaxException {
+    public ResponseEntity<ResponseDTO> checkTypeGeocoding(RequestDTO requestDTO) {
         if(!Strings.isEmpty(requestDTO.getAddress())){
             return directGeo(requestDTO);
         }
@@ -31,19 +33,19 @@ public class GeocoderService {
         }
     }
 
-    public ResponseDTO directGeo(RequestDTO requestDTO) throws URISyntaxException {
+    public ResponseEntity<ResponseDTO> directGeo(RequestDTO requestDTO) {
         String url = twoGisURL;
 
-            url += "?q=" + requestDTO.getAddress();
-            url += "&fields=items.point";
-            url += "&key=" + APIkey;
+        url += "?q=" + requestDTO.getAddress();
+        url += "&fields=items.point";
+        url += "&key=" + APIkey;
 
-            log.info("Direct Geocoding. Request: " + url);
+        log.info("Direct Geocoding. Request: " + url);
 
-        return restTemplate.getForObject(url, ResponseDTO.class);
+        return new ResponseEntity<>(restTemplate.getForObject(url, ResponseDTO.class), HttpStatus.OK);
     }
 
-    public ResponseDTO reserveGEO(RequestDTO requestDTO) {
+    public ResponseEntity<ResponseDTO> reserveGEO(RequestDTO requestDTO) {
         String url = twoGisURL;
 
         url += "?lat=" + requestDTO.getLat();
@@ -53,6 +55,6 @@ public class GeocoderService {
 
         log.info("Reverse Geocoding. Request: " + url);
 
-        return restTemplate.getForObject(url, ResponseDTO.class);
+        return new ResponseEntity<>(restTemplate.getForObject(url, ResponseDTO.class), HttpStatus.OK);
     }
 }
