@@ -1,4 +1,4 @@
-package com.magatella.geocogingservice.config.cache;
+package com.magatella.geocodingservice.config.cache;
 
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.util.StringUtils;

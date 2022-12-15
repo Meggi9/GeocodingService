@@ -1,4 +1,4 @@
-package com.magatella.geocogingservice.entity;
+package com.magatella.geocodingservice.entity.request;
 
 import lombok.Data;
 

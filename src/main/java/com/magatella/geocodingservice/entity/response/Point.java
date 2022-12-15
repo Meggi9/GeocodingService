@@ -1,31 +1,30 @@
-package com.magatella.geocogingservice.entity.response;
+package com.magatella.geocodingservice.entity.response;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 
 import javax.annotation.processing.Generated;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("jsonschema2pojo")
-public class Result {
-    @JsonProperty("items")
-    public List<Item> items = null;
-    @JsonProperty("total")
-    public String total;
+public class Point {
+    @JsonProperty("lat")
+    public String lat;
+    @JsonProperty("lon")
+    public String lon;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public Result withItems(List<Item> items) {
-        this.items = items;
+    public Point withLat(String lat) {
+        this.lat = lat;
         return this;
     }
 
-    public Result withTotal(String total) {
-        this.total = total;
+    public Point withLon(String lon) {
+        this.lon = lon;
         return this;
     }
 
@@ -39,7 +38,7 @@ public class Result {
         this.additionalProperties.put(name, value);
     }
 
-    public Result withAdditionalProperty(String name, Object value) {
+    public Point withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }

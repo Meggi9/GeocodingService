@@ -1,26 +1,23 @@
-package com.magatella.geocogingservice.controller;
+package com.magatella.geocodingservice.controller;
 
 
-import com.magatella.geocogingservice.entity.RequestDTO;
-import com.magatella.geocogingservice.entity.response.ResponseDTO;
-import com.magatella.geocogingservice.service.GeocoderService;
+import com.magatella.geocodingservice.entity.request.RequestDTO;
+import com.magatella.geocodingservice.entity.response.ResponseDTO;
+import com.magatella.geocodingservice.service.TwoGisGeocoderService;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URISyntaxException;
-
 @RestController
 @RequestMapping(path = "/api")
 public class GeocoderController {
 
-    private final GeocoderService geocoderService;
+    private final TwoGisGeocoderService geocoderService;
 
-    public GeocoderController(GeocoderService geocoderService) {
+    public GeocoderController(TwoGisGeocoderService geocoderService) {
         this.geocoderService = geocoderService;
     }
 

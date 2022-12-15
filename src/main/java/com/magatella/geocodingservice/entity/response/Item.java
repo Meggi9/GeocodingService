@@ -1,4 +1,4 @@
-package com.magatella.geocogingservice.entity.response;
+package com.magatella.geocodingservice.entity.response;
 
 import com.fasterxml.jackson.annotation.*;
 

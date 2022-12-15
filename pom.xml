@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.magatella</groupId>
-    <artifactId>GeocogingService</artifactId>
+    <artifactId>GeocodingService</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>GeocogingService</name>
-    <description>GeocogingService</description>
+    <name>GeocodingService</name>
+    <description>GeocodingService</description>
     <properties>
         <java.version>17</java.version>
     </properties>
