@@ -1,3 +1,11 @@
 FROM openjdk:17
-ADD target/GeocodingService-0.0.1-SNAPSHOT.jar GeocodingApp.jar
-ENTRYPOINT ["java", "-jar", "GeocodingApp.jar"]
+
+WORKDIR /app
+
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
+RUN ./mvnw dependency:resolve
+
+COPY src ./src
+
+CMD ["./mvnw", "spring-boot:run"]
